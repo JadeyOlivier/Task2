@@ -24,6 +24,7 @@ namespace JadeOlivier_19013088_Task1
 
         public int ProdutionSpeed { get => produtionSpeed;}
 
+        //Constructor intialiser for building takes in created values and sends them to parent class Building
         public FactoryBuilding(int x, int y, string team, char symb, string unitToProduce, int speed) : base(x, y, 5, team, symb)
         {
             this.produtionSpeed = speed;
@@ -38,6 +39,7 @@ namespace JadeOlivier_19013088_Task1
             }
         }
 
+        //Overloaded Constructor intialiser for building takes in created values and sends them to parent class Building, including maxHP
         public FactoryBuilding(int x, int y, int hp, int maxHP, string team, char symb, string unitToProduce, int speed) : base(x, y, hp, maxHP, team, symb)
         {
             this.produtionSpeed = speed;
@@ -53,6 +55,7 @@ namespace JadeOlivier_19013088_Task1
 
         }
 
+        //Generates a unit and sends it back to the game engine to be placed in the unit array and on the map
         public Unit generateUnit()
         {        
             string teamName, unitName = "";
@@ -179,6 +182,7 @@ namespace JadeOlivier_19013088_Task1
             return returnVal;
         }
 
+        //Buildings values are saved to a textfile
         public override void Save()
         {
             string savedString = "";

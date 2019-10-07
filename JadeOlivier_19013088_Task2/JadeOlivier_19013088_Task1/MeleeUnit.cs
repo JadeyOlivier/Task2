@@ -10,16 +10,20 @@ namespace JadeOlivier_19013088_Task1
     class MeleeUnit : Unit
     {
         Map mapTracker = new Map(10,6);
+
+        //Constructor intialiser for unit takes in created values and sends them to parent class Unit
         public MeleeUnit(int meleeX, int meleeY, string meleeName,string meleeTeam, char meleeSymb, bool meleeAttacking) : base(meleeX, meleeY, meleeName, 6, 3, 2, 1, meleeTeam, meleeSymb, meleeAttacking)
         {
 
         }
 
+        //Overloaded Constructor intialiser for unit takes in created values and sends them to parent class Unit, including the MaxHp
         public MeleeUnit(int meleeX, int meleeY, string meleeName, int meleeHp, int meleeMaxHP, string meleeTeam, char meleeSymb, bool meleeAttacking) : base(meleeX, meleeY, meleeName, meleeHp, meleeMaxHP, 3, 2, 1, meleeTeam, meleeSymb, meleeAttacking)
         {
 
         }
 
+        //Movement takes in the enemy unit the current unit needs to move to and finds the shortest way of getting to that unit without moviong diagonally
         public override string Move(Unit unitToEngage)
         {
             string returnVal = "";
@@ -167,6 +171,9 @@ namespace JadeOlivier_19013088_Task1
             return returnVal;
         }
 
+        //Distance formula used to determine closest unit. If distance of the opponent unit currently being tested is less than the
+        //distance of the previously tested opponent unit, the current unit then becomes the closest unit. Once all units in the 
+        //array have been tested, the closest enemy unit is passed back to GameEngine
         public override Unit ClosestUnit(Unit[] unitClosetCheck)
         {
             int workingOut, xDis, yDis;
@@ -221,6 +228,7 @@ namespace JadeOlivier_19013088_Task1
             return returnVal;
         }
 
+        //Method to deal with combatting the enemy unit once it is in range. Lowers enemy hp using current units attack value
         public override void Combat(Unit attackingUnit)
         {
             string typeCheck = attackingUnit.GetType().ToString();
@@ -241,6 +249,7 @@ namespace JadeOlivier_19013088_Task1
             }
         }
 
+        //Tests if current units health is <= 0 and removes it from the map 
         public override bool IsDead()
         {
             bool unitDead;
@@ -257,6 +266,7 @@ namespace JadeOlivier_19013088_Task1
             return unitDead;
         }
 
+        //Tests if closest enemy unit is within 1 blocks of the current unit 
         public override bool IsInRange(Unit unitInRange)
         {
             bool inRange = false; ;
@@ -291,7 +301,8 @@ namespace JadeOlivier_19013088_Task1
 
             return inRange;
         }
-
+       
+        //If the unit is low on health it will runaway in any random direction
         public string RandomMove()
         {
             Random rgn = new Random();
@@ -325,6 +336,7 @@ namespace JadeOlivier_19013088_Task1
             return moveDirect;
         }
 
+        //For displaying stats of this unit
         public override string ToString()
         {
             string returnVal = "";
@@ -345,6 +357,7 @@ namespace JadeOlivier_19013088_Task1
             return returnVal; 
         }
 
+        //Saves the current units information into a textfile.
         public override void Save()
         {
             string savedString = "";

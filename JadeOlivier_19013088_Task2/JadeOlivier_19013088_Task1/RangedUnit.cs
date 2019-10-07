@@ -188,6 +188,7 @@ namespace JadeOlivier_19013088_Task1
             }
         }
 
+        //Tests if closest enemy unit is within 2 blocks of the current unit 
         public override bool IsInRange(Unit unitInRange)
         {
             bool inRange = false; ;
@@ -223,6 +224,9 @@ namespace JadeOlivier_19013088_Task1
             return inRange;
         }
 
+        //Distance formula used to determine closest unit. If distance of the opponent unit currently being tested is less than the
+        //distance of the previously tested opponent unit, the current unit then becomes the closest unit. Once all units in the 
+        //array have been tested, the closest enemy unit is passed back to GameEngine
         public override Unit ClosestUnit(Unit[] unitClosetCheck)
         {
             int workingOut, xDis, yDis;
@@ -271,6 +275,7 @@ namespace JadeOlivier_19013088_Task1
             return returnVal;
         }
 
+        //Tests if current units health is <= 0 and removes it from the map 
         public override bool IsDead()
         {
             bool unitDead;
@@ -295,6 +300,7 @@ namespace JadeOlivier_19013088_Task1
             return unitDead;
         }
 
+        //If the unit is low on health it will runaway in any random direction
         public string RandomMove()
         {
             Random rgn = new Random();
@@ -328,6 +334,7 @@ namespace JadeOlivier_19013088_Task1
             return moveDirect;
         }
 
+        //For displaying stats of this unit
         public override string ToString()
         {
             string returnVal = "";
@@ -348,6 +355,7 @@ namespace JadeOlivier_19013088_Task1
             return returnVal;
         }
 
+        //Saves the current units information into a textfile.
         public override void Save()
         {
             string savedString = "";

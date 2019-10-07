@@ -22,6 +22,7 @@ namespace JadeOlivier_19013088_Task1
         public string Team { get => base.team;}
         public char Symbol { get => base.symbol;}
 
+        //Constructor intialiser for building takes in created values and sends them to parent class Building
         public ResourceBuilding(int x, int y, string team, char symb, string typeResource, int eachRound, int avaliableAmount) : base(x, y, 5, team, symb)
         {
             this.rescourceType = typeResource;
@@ -29,6 +30,7 @@ namespace JadeOlivier_19013088_Task1
             this.resourcePool = avaliableAmount;
         }
 
+        //Overloaded Constructor intialiser for building takes in created values and sends them to parent class Building, including maxHP
         public ResourceBuilding(int x, int y, int hp, int maxhp, string team, char symb, string typeResource, int currrentGenerated, int avaliableAmount, int eachRound) : base(x, y, hp, maxhp, team, symb)
         {
             this.rescourceType = typeResource;
@@ -37,6 +39,7 @@ namespace JadeOlivier_19013088_Task1
             this.health = hp;
         }
 
+        //generates a certain amount of resources each round and decreases the amount of avaliable resources 
         public void GeneratedResources()
         {
             if (IsDead() == false && resourcePool > 0)
@@ -79,6 +82,7 @@ namespace JadeOlivier_19013088_Task1
             return returnVal;
         }
 
+        //Saves buildings values in a textfile
         public override void Save()
         {
             string savedString = "";
