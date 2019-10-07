@@ -274,6 +274,7 @@ namespace JadeOlivier_19013088_Task1
             return mapShow;
         }   
 
+        //Map is repopulatede with the previously saved values for units and buildings
         public void Read()
         {
             int index, x, y, health, maxHealth, generatedAmount, resourcePool, amountGeneratedPerRound, productionSpeed;
