@@ -19,6 +19,9 @@ namespace JadeOlivier_19013088_Task1
 
         public Map MapTracker { get => mapTracker; set => mapTracker = value; }
 
+        //Units and buildings each move on their own turn if number of rounds that have happened allow the unit/building to move.
+        //Units will then either move to their closest enemy unit, attack that enemy unit or simply runaway based on its current state
+        //Resource buildings only tick up resources for the team and Factory buildings spawn units if the number of rounds falls withing thier production speed
         public void GameRun()
         {
             ++numRounds;

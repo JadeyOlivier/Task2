@@ -36,7 +36,8 @@ namespace JadeOlivier_19013088_Task1
             buildingArray = new Building[numBuildings];
         }
 
-
+        //Map is populated with new units and buildings (each type stored in their own array). These are then used to further
+        //populate a visual representation of the battlefield to be displayed on the form
         public void populateMap()
         {
             string teamName, unitName = "", resource, unitType = "";
