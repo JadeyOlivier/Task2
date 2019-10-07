@@ -29,10 +29,12 @@ namespace JadeOlivier_19013088_Task1
 
         private void battleTimer_Tick(object sender, EventArgs e)
         {
+            //map and stats are updated everytime the timer ticks 
             rtxProgress.Text = "";
             timerTicks++;
             lblRound.Text = timerTicks.ToString();
-            if(ge.MapTracker.NumDayWalkers > 0 && ge.MapTracker.NumNightRiders > 0)
+            //Game only runs if both teams still have units in them. If one team kills all the units on the other team, the game stops
+            if (ge.MapTracker.NumDayWalkers > 0 && ge.MapTracker.NumNightRiders > 0)
             {
                 ge.GameRun();
                 lblMap.Text = ge.MapTracker.drawMap();
@@ -40,6 +42,7 @@ namespace JadeOlivier_19013088_Task1
             }
         }
 
+        //Both units and buildings tostrings have been added to the rich text box to display stats
         private void Display()
         {
             battleInfo = "";
@@ -89,6 +92,7 @@ namespace JadeOlivier_19013088_Task1
 
         private void frmBattlefield_Load(object sender, EventArgs e)
         {
+            //Directories for both the building and unit textfiles are create when the form loads to be called later during the saving and reading processes
             if (!Directory.Exists("SavedUnits"))
             {
                 Directory.CreateDirectory("SavedUnits");
@@ -106,6 +110,7 @@ namespace JadeOlivier_19013088_Task1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            //Values from both the buildings and units are saved into seperate textfiles
             FileStream fsU = new FileStream("SavedUnits/unitTextFile", FileMode.Create, FileAccess.Write);
             fsU.Close();
             FileStream fsB = new FileStream("SavedBuildings/buildingTextFile", FileMode.Create, FileAccess.Write);
@@ -151,6 +156,7 @@ namespace JadeOlivier_19013088_Task1
 
         private void btnRead_Click(object sender, EventArgs e)
         {
+            //Saved values are called out of the textfile and displayed again, overwriting the current map
              FileStream fsU = new FileStream("SavedUnits/unitTextFile", FileMode.Open, FileAccess.Read);
             fsU.Close();
             FileStream fsB = new FileStream("SavedBuildings/buildingTextFile", FileMode.Open, FileAccess.Read);
